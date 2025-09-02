@@ -5,6 +5,7 @@ import { formatDate } from "../utils";
 import CarCard from "../components/CarCard";
 import Button from "../components/ui/Button";
 import angleLeft from "../assets/Icons/angle-left.svg";
+import "./CarDetailPage.css";
 
 type Props = { data: CarsData };
 

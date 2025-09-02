@@ -6,6 +6,7 @@ import doorIcon from "../assets/Icons/door.svg";
 import transmissionIcon from "../assets/Icons/transmission.svg";
 import fuelIcon from "../assets/Icons/fuel.svg";
 import acIcon from "../assets/Icons/snowflake.svg";
+import "./CarCard.css";
 
 import alamoLogo from "../assets/Vendors/alamo.svg";
 import avisLogo from "../assets/Vendors/avis.svg";
