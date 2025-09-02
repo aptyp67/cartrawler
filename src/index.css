@@ -8,8 +8,57 @@ body,
   box-sizing: border-box;
 }
 
+:root {
+  --primary: #e6356f;
+  --black: #333333;
+  --white: #ffffff;
+  --grey: #efefef;
+  --container: #c7c7cd;
+
+  --radius: 6px;
+
+  --title-xl: 48px;
+  --title-xl-lh: 65px;
+
+  --title-l: 42px;
+  --title-l-lh: 57px;
+
+  --title-m: 36px;
+  --title-m-lh: 49px;
+
+  --title-s: 32px;
+  --title-s-lh: 43px;
+
+  --subtitle-xl: 28px;
+  --subtitle-xl-lh: 38px;
+
+  --subtitle-l: 24px;
+  --subtitle-l-lh: 33px;
+
+  --subtitle-m: 20px;
+  --subtitle-m-lh: 27px;
+
+  --subtitle-s: 18px;
+  --subtitle-s-lh: 24px;
+
+  --body-l: 16px;
+  --body-l-lh: 22px;
+
+  --body-m: 14px;
+  --body-m-lh: 19px;
+
+  --body-s: 12px;
+  --body-s-lh: 17px;
+}
+
 body {
   margin: 0;
+  color: var(--black);
+  background: var(--grey);
+  font-family: "Open Sans", system-ui, -apple-system, Segoe UI, Roboto,
+    Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: var(--body-l-lh);
 }
 
 img {

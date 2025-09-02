@@ -56,7 +56,7 @@ export default function App() {
                         src={c.picture}
                         alt={c.name}
                       />
-                      <div className="item-info">
+                      <div>
                         <div className="item-name">{c.name}</div>
                         <div className="item-meta">{c.vendorName}</div>
                       </div>
