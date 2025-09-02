@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { getCars, type CarsData, type CarItem } from "./api";
+import CarCard from "./components/CarCard";
 import { formatDate } from "./utils";
 
 import "./App.css";
@@ -49,23 +50,7 @@ export default function App() {
               </div>
               <ul className="items">
                 {data.cars.map((c: CarItem) => (
-                  <li className="item" key={c.id}>
-                    <div className="item-main">
-                      <img
-                        className="item-photo"
-                        src={c.picture}
-                        alt={c.name}
-                      />
-                      <div>
-                        <div className="item-name">{c.name}</div>
-                        <div className="item-meta">{c.vendorName}</div>
-                      </div>
-                    </div>
-                    <div className="item-price">
-                      <span className="amount">{c.price.toFixed(2)}</span>
-                      <span className="currency">{c.currency}</span>
-                    </div>
-                  </li>
+                  <CarCard key={c.id} car={c} />
                 ))}
               </ul>
             </section>
