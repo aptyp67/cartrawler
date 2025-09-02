@@ -56,6 +56,11 @@
   gap: 12px;
   margin-bottom: 12px;
 }
+.list-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 .list-title {
   font-size: var(--subtitle-m);
   line-height: var(--subtitle-m-lh);
@@ -63,6 +68,23 @@
 }
 .list-sub {
   color: var(--black);
+}
+
+.sort {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sort-label {
+  font-size: var(--body-m);
+}
+.sort-select {
+  font: inherit;
+  color: inherit;
+  background: #fafafa;
+  border: 1px solid var(--container);
+  border-radius: var(--radius);
+  padding: 6px 10px;
 }
 
 .items {
@@ -202,6 +224,15 @@
     align-items: flex-start;
     gap: 4px;
     margin-bottom: 8px;
+  }
+  .list-controls {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+  }
+  .sort {
+    justify-self: end;
   }
   .legend,
   .list {
