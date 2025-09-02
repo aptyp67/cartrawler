@@ -1,35 +1,77 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useMemo, useState } from "react";
+import { getCars, type CarsData, type CarItem } from "./api";
+import { formatDate } from "./utils";
 
-function App() {
-  const [count, setCount] = useState(0)
+import "./App.css";
+
+export default function App() {
+  const [data, setData] = useState<CarsData | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getCars()
+      .then((d: CarsData) => setData(d))
+      .catch((e: unknown) =>
+        setError(e instanceof Error ? e.message : String(e))
+      )
+      .finally(() => setLoading(false));
+  }, []);
+
+  const legendText = useMemo(() => {
+    if (!data) return "";
+    const a = `${data.legend.pickupName} • ${formatDate(data.legend.pickupAt)}`;
+    const b = `${data.legend.returnName} • ${formatDate(data.legend.returnAt)}`;
+    return `${a} → ${b}`;
+  }, [data]);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="page">
+      <header className="topbar">
+        <h1 className="brand">Car availability</h1>
+      </header>
 
-export default App
+      <main className="content">
+        {loading && <p className="note">Loading…</p>}
+        {error && <p className="error">{error}</p>}
+        {data && (
+          <>
+            <section className="legend">
+              <div className="legend-title">Pickup and return</div>
+              <div className="legend-text">{legendText}</div>
+            </section>
+            <section className="list">
+              <div className="list-head">
+                <div className="list-title">Cars</div>
+                <div className="list-sub">
+                  {data.cars.length} options • sorted by price
+                </div>
+              </div>
+              <ul className="items">
+                {data.cars.map((c: CarItem) => (
+                  <li className="item" key={c.id}>
+                    <div className="item-main">
+                      <img
+                        className="item-photo"
+                        src={c.picture}
+                        alt={c.name}
+                      />
+                      <div className="item-info">
+                        <div className="item-name">{c.name}</div>
+                        <div className="item-meta">{c.vendorName}</div>
+                      </div>
+                    </div>
+                    <div className="item-price">
+                      <span className="amount">{c.price.toFixed(2)}</span>
+                      <span className="currency">{c.currency}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          </>
+        )}
+      </main>
+    </div>
+  );
+}

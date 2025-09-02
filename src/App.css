@@ -1,42 +1,131 @@
-#root {
-  max-width: 1280px;
+:root {
+  --pink: #e6356f;
+  --ink: #333333;
+  --paper: #ffffff;
+  --mist: #efefef;
+  --line: #c7c7cd;
+}
+
+@font-face {
+  font-family: Open Sans;
+  src: local("Open Sans"), local("OpenSans");
+}
+
+body {
+  color: var(--ink);
+  background: var(--mist);
+  font-family: "Open Sans", system-ui, -apple-system, Segoe UI, Roboto,
+    Helvetica, Arial, sans-serif;
+  font-size: 16px;
+}
+
+.page {
+  min-height: 100%;
+  background: var(--paper);
+}
+
+.topbar {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.content {
+  max-width: 1040px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  padding: 20px;
+}
+.note {
+  margin: 40px 0;
+}
+.error {
+  color: #b00020;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.legend {
+  display: grid;
+  gap: 4px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--paper);
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.legend-title {
+  font-weight: 600;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.legend-text {
+  color: #555;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.list {
+  margin-top: 20px;
+}
+.list-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.list-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+.list-sub {
+  color: #666;
+}
+
+.items {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+.item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+}
+.item-main {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 12px;
+  align-items: center;
+}
+.item-photo {
+  width: 120px;
+  height: 80px;
+  object-fit: contain;
+}
+.item-name {
+  font-weight: 600;
+}
+.item-meta {
+  color: #666;
+}
+.item-price {
+  text-align: right;
+}
+.amount {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--pink);
+}
+.currency {
+  margin-left: 4px;
+  color: #666;
+}
+
+@media (min-width: 720px) {
+  .items {
+    grid-template-columns: 1fr 1fr;
   }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
