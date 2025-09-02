@@ -86,37 +86,31 @@ export default function CarCard({ car, clickable = true }: Props) {
   const logo = getVendorLogo(car.vendorName) || partnerLogo;
   const ac = hasAC(car.airConditioning);
 
+  const content = (
+    <>
+      <div className="item-main">
+        <CardMain car={car} logo={logo} ac={ac} />
+      </div>
+      <div className="item-price">
+        <div>
+          <span className="amount">{car.price.toFixed(2)}</span>
+          <span className="currency">{car.currency}</span>
+        </div>
+        <div className="item-subprice">
+          {car.pricePerDay.toFixed(2)} {car.currency} / day
+        </div>
+      </div>
+    </>
+  );
+
   return (
-    <li className="item item--card" key={car.id}>
+    <li key={car.id}>
       {clickable ? (
-        <Link to={`/car/${car.id}`} className="item-main">
-          <CardMain car={car} logo={logo} ac={ac} />
+        <Link to={`/car/${car.id}`} className="item item--card">
+          {content}
         </Link>
       ) : (
-        <div className="item-main">
-          <CardMain car={car} logo={logo} ac={ac} />
-        </div>
-      )}
-      {clickable ? (
-        <Link to={`/car/${car.id}`} className="item-price">
-          <div>
-            <span className="amount">{car.price.toFixed(2)}</span>
-            <span className="currency">{car.currency}</span>
-          </div>
-          <div className="item-subprice">
-            {car.pricePerDay.toFixed(2)} {car.currency} / day
-          </div>
-        </Link>
-      ) : (
-        <div className="item-price">
-          <div>
-            <span className="amount">{car.price.toFixed(2)}</span>
-            <span className="currency">{car.currency}</span>
-          </div>
-          <div className="item-subprice">
-            {car.pricePerDay.toFixed(2)} {car.currency} / day
-          </div>
-        </div>
+        <div className="item item--card">{content}</div>
       )}
     </li>
   );
