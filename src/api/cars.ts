@@ -7,15 +7,11 @@ export type Legend = {
   pickupAt: string;
   returnName: string;
   returnAt: string;
-  rentalDays: number;
 };
 
 export type CarItem = {
   id: string;
-  vendorCode: string;
   vendorName: string;
-  code: string;
-  codeContext: string;
   name: string;
   picture: string;
   passengers: string;
@@ -23,7 +19,6 @@ export type CarItem = {
   transmission: string;
   airConditioning: string;
   fuel: string;
-  drive: string;
   doors: string;
   price: number;
   currency: string;
@@ -46,6 +41,14 @@ export async function getCars(source: string = FEED_URL): Promise<CarsData> {
 function toCars(raw: unknown): CarsData {
   const core = getFieldValue(raw, "VehAvailRSCore");
   const rental = getFieldValue(core, "VehRentalCore");
+  const rentalDays = (() => {
+    const start = new Date(String(getFieldValue(rental, "@PickUpDateTime") ?? ""));
+    const end = new Date(String(getFieldValue(rental, "@ReturnDateTime") ?? ""));
+    const diff = end.getTime() - start.getTime();
+    if (!Number.isFinite(diff) || diff <= 0) return 1;
+    const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+    return days > 0 ? days : 1;
+  })();
   const legend: Legend = {
     pickupName: String(
       getFieldValue(getFieldValue(rental, "PickUpLocation"), "@Name") ?? ""
@@ -55,14 +58,6 @@ function toCars(raw: unknown): CarsData {
       getFieldValue(getFieldValue(rental, "ReturnLocation"), "@Name") ?? ""
     ),
     returnAt: String(getFieldValue(rental, "@ReturnDateTime") ?? ""),
-    rentalDays: (() => {
-      const start = new Date(String(getFieldValue(rental, "@PickUpDateTime") ?? ""));
-      const end = new Date(String(getFieldValue(rental, "@ReturnDateTime") ?? ""));
-      const diff = end.getTime() - start.getTime();
-      if (!Number.isFinite(diff) || diff <= 0) return 1;
-      const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
-      return days > 0 ? days : 1;
-    })(),
   };
 
   const vendors = asArray(getFieldValue(core, "VehVendorAvails"));
@@ -77,9 +72,8 @@ function toCars(raw: unknown): CarsData {
     return available.map((it, idx): CarItem => {
       const vehicle = getFieldValue(it, "Vehicle");
       const priceInfo = getFieldValue(it, "TotalCharge");
-      const id = `${vendorCode}-${String(
-        getFieldValue(vehicle, "@Code") ?? "car"
-      )}-${idx}`;
+      const vehicleCode = String(getFieldValue(vehicle, "@Code") ?? "car");
+      const id = `${vendorCode}-${vehicleCode}-${idx}`;
       const estAmount = getFieldValue(priceInfo, "@EstimatedTotalAmount");
       const rateAmount = getFieldValue(priceInfo, "@RateTotalAmount");
       const est = typeof estAmount === "number" ? estAmount : Number(estAmount ?? NaN);
@@ -89,13 +83,10 @@ function toCars(raw: unknown): CarsData {
         : Number.isFinite(rate)
         ? rate
         : 0;
-      const pricePerDay = legend.rentalDays > 0 ? price / legend.rentalDays : price;
+      const pricePerDay = rentalDays > 0 ? price / rentalDays : price;
       return {
         id,
-        vendorCode,
         vendorName,
-        code: String(getFieldValue(vehicle, "@Code") ?? ""),
-        codeContext: String(getFieldValue(vehicle, "@CodeContext") ?? ""),
         name: String(
           getFieldValue(getFieldValue(vehicle, "VehMakeModel"), "@Name") ?? ""
         ),
@@ -105,7 +96,6 @@ function toCars(raw: unknown): CarsData {
         transmission: String(getFieldValue(vehicle, "@TransmissionType") ?? ""),
         airConditioning: String(getFieldValue(vehicle, "@AirConditionInd") ?? ""),
         fuel: String(getFieldValue(vehicle, "@FuelType") ?? ""),
-        drive: String(getFieldValue(vehicle, "@DriveType") ?? ""),
         doors: String(getFieldValue(vehicle, "@DoorCount") ?? ""),
         price,
         currency: String(getFieldValue(priceInfo, "@CurrencyCode") ?? ""),
