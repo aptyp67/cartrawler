@@ -45,7 +45,12 @@ export default function App() {
   }
 
   return (
-    <BrowserRouter>
+    <BrowserRouter
+      future={{
+        v7_relativeSplatPath: true,
+        v7_startTransition: true,
+      }}
+    >
       <Routes>
         <Route path="/" element={<CarListPage data={data} />} />
         <Route path="/car/:id" element={<CarDetailPage data={data} />} />
