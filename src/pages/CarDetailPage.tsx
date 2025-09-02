@@ -1,8 +1,10 @@
 import { useMemo } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { type CarsData, type CarItem } from "../api";
 import { formatDate } from "../utils";
 import CarCard from "../components/CarCard";
+import Button from "../components/ui/Button";
+import angleLeft from "../assets/Icons/angle-left.svg";
 
 type Props = { data: CarsData };
 
@@ -35,7 +37,9 @@ export default function CarDetailPage({ data }: Props) {
           <div className="list-head">
             <div className="list-title">Selected car</div>
             <div className="list-sub">
-              <Link to="/">← Back to all cars</Link>
+              <Button to="/" variant="secondary" leftIcon={angleLeft}>
+                Back to all cars
+              </Button>
             </div>
           </div>
           {!car && <p className="error">Car not found</p>}
