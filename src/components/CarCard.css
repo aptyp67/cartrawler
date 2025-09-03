@@ -12,18 +12,15 @@
   box-shadow: 0 1px 2px color-mix(in srgb, var(--black) 6%, transparent);
   transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
 }
-.item:hover {
+.item--clickable:hover {
   border-color: color-mix(in srgb, var(--primary) 40%, var(--container));
-  box-shadow:
-    0 1px 2px color-mix(in srgb, var(--black) 8%, transparent),
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--black) 8%, transparent),
     0 4px 10px color-mix(in srgb, var(--black) 10%, transparent);
   transform: translateY(-1px);
 }
 .item:focus-visible {
   outline: none;
-  box-shadow:
-    0 0 0 3px color-mix(in srgb, var(--primary) 20%, transparent),
-    0 1px 2px color-mix(in srgb, var(--black) 8%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 20%, transparent);
 }
 
 .item-main {
@@ -33,16 +30,10 @@
   align-items: center;
   align-self: stretch;
 }
-.item-main,
-.item-price {
-  color: inherit;
-  text-decoration: none;
-}
 .item-photo {
   width: 120px;
   height: 80px;
   object-fit: contain;
-  border-radius: calc(var(--radius) - 2px);
 }
 .item-name {
   font-weight: 600;

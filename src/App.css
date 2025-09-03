@@ -1,8 +1,3 @@
-@font-face {
-  font-family: Open Sans;
-  src: local("Open Sans"), local("OpenSans");
-}
-
 .page {
   min-height: 100%;
   background: var(--white);

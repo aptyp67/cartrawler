@@ -37,7 +37,15 @@ function hasAC(value: string | undefined): boolean {
   return v === "true" || v === "y" || v === "yes" || v === "1";
 }
 
-function CardMain({ car, logo, ac }: { car: CarItem; logo: string; ac: boolean }) {
+function CardMain({
+  car,
+  logo,
+  ac,
+}: {
+  car: CarItem;
+  logo: string;
+  ac: boolean;
+}) {
   return (
     <>
       <img className="item-photo" src={car.picture} alt={car.name} />
@@ -64,7 +72,11 @@ function CardMain({ car, logo, ac }: { car: CarItem; logo: string; ac: boolean }
           )}
           {car.transmission && (
             <li className="spec">
-              <img className="spec-icon" src={transmissionIcon} alt="Transmission" />
+              <img
+                className="spec-icon"
+                src={transmissionIcon}
+                alt="Transmission"
+              />
               <span className="spec-text">{car.transmission}</span>
             </li>
           )}
@@ -108,7 +120,7 @@ export default function CarCard({ car, clickable = true }: Props) {
   return (
     <li key={car.id}>
       {clickable ? (
-        <Link to={`/car/${car.id}`} className="item item--card">
+        <Link to={`/car/${car.id}`} className="item item--card item--clickable">
           {content}
         </Link>
       ) : (
