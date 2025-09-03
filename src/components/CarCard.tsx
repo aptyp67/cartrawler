@@ -1,17 +1,18 @@
 import type { CarItem } from "../api";
 import { Link } from "react-router-dom";
-import personIcon from "../assets/Icons/person.svg";
-import bagIcon from "../assets/Icons/bag.svg";
-import doorIcon from "../assets/Icons/door.svg";
-import transmissionIcon from "../assets/Icons/transmission.svg";
-import fuelIcon from "../assets/Icons/fuel.svg";
-import acIcon from "../assets/Icons/snowflake.svg";
+import {
+  personIcon,
+  bagIcon,
+  doorIcon,
+  transmissionIcon,
+  fuelIcon,
+  acIcon,
+  alamoLogo,
+  avisLogo,
+  hertzLogo,
+  partnerLogo,
+} from "../assets";
 import "./CarCard.css";
-
-import alamoLogo from "../assets/Vendors/alamo.svg";
-import avisLogo from "../assets/Vendors/avis.svg";
-import hertzLogo from "../assets/Vendors/hertz.svg";
-import partnerLogo from "../assets/Partner Logo/partner.svg";
 
 type Props = {
   car: CarItem;
