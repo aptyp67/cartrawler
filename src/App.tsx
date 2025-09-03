@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import CarListPage from "./pages/CarListPage";
 import CarDetailPage from "./pages/CarDetailPage";
 import { getCars, type CarsData } from "./api";
+import Header from "./components/Header";
+import { ThemeProvider } from "./ThemeContext";
 
 import "./App.css";
 
@@ -18,44 +20,31 @@ export default function App() {
       .finally(() => setLoading(false));
   }, []);
 
-  if (loading) {
-    return (
-      <div className="page">
-        <header className="topbar">
-          <h1 className="brand">Car availability</h1>
-        </header>
-        <main className="content">
-          <p className="note">Loading…</p>
-        </main>
-      </div>
-    );
-  }
-
-  if (error || !data) {
-    return (
-      <div className="page">
-        <header className="topbar">
-          <h1 className="brand">Car availability</h1>
-        </header>
-        <main className="content">
-          <p className="error">{error || "Failed to load data"}</p>
-        </main>
-      </div>
-    );
-  }
-
   return (
-    <BrowserRouter
-      future={{
-        v7_relativeSplatPath: true,
-        v7_startTransition: true,
-      }}
-    >
-      <Routes>
-        <Route path="/" element={<CarListPage data={data} />} />
-        <Route path="/car/:id" element={<CarDetailPage data={data} />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-    </BrowserRouter>
+    <ThemeProvider>
+      <BrowserRouter
+        future={{
+          v7_relativeSplatPath: true,
+          v7_startTransition: true,
+        }}
+      >
+        <div className="page">
+          <Header />
+          <main className="content">
+            {loading && <p className="note">Loading…</p>}
+            {!loading && (error || !data) && (
+              <p className="error">{error || "Failed to load data"}</p>
+            )}
+            {!loading && data && (
+              <Routes>
+                <Route path="/" element={<CarListPage data={data} />} />
+                <Route path="/car/:id" element={<CarDetailPage data={data} />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </Routes>
+            )}
+          </main>
+        </div>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }

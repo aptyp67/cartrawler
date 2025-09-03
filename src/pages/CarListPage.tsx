@@ -27,43 +27,37 @@ export default function CarListPage({ data }: Props) {
   }, [data.cars, sort]);
 
   return (
-    <div className="page">
-      <header className="topbar">
-        <h1 className="brand">Car availability</h1>
-      </header>
-
-      <main className="content">
-        <section className="legend">
-          <div className="legend-title">Pickup and return</div>
-          <div className="legend-text">{legendText}</div>
-        </section>
-        <section className="list">
-          <div className="list-head">
-            <div className="list-title">Cars</div>
-            <div className="list-controls">
-              <div className="list-sub">{data.cars.length} options</div>
-              <div className="sort">
-                <label htmlFor="sort" className="sort-label">Sort by</label>
-                <select
-                  id="sort"
-                  className="sort-select"
-                  value={sort}
-                  onChange={(e) => setSort(e.target.value as typeof sort)}
-                  aria-label="Sort by"
-                >
-                  <option value="price-asc">Price: Low to High</option>
-                  <option value="price-desc">Price: High to Low</option>
-                </select>
-              </div>
+    <>
+      <section className="legend">
+        <div className="legend-title">Pickup and return</div>
+        <div className="legend-text">{legendText}</div>
+      </section>
+      <section className="list">
+        <div className="list-head">
+          <div className="list-title">Cars</div>
+          <div className="list-controls">
+            <div className="list-sub">{data.cars.length} options</div>
+            <div className="sort">
+              <label htmlFor="sort" className="sort-label">Sort by</label>
+              <select
+                id="sort"
+                className="sort-select"
+                value={sort}
+                onChange={(e) => setSort(e.target.value as typeof sort)}
+                aria-label="Sort by"
+              >
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+              </select>
             </div>
           </div>
-          <ul className="items">
-            {sortedCars.map((c: CarItem) => (
-              <CarCard key={c.id} car={c} />
-            ))}
-          </ul>
-        </section>
-      </main>
-    </div>
+        </div>
+        <ul className="items">
+          {sortedCars.map((c: CarItem) => (
+            <CarCard key={c.id} car={c} />
+          ))}
+        </ul>
+      </section>
+    </>
   );
 }

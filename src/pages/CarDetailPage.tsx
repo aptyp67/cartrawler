@@ -23,47 +23,41 @@ export default function CarDetailPage({ data }: Props) {
   }, [data]);
 
   return (
-    <div className="page">
-      <header className="topbar">
-        <h1 className="brand">Car availability</h1>
-      </header>
+    <>
+      <div className="legend">
+        <div className="legend-title">Pickup and return</div>
+        <div className="legend-text">{legendText}</div>
+      </div>
 
-      <main className="content">
-        <div className="legend">
-          <div className="legend-title">Pickup and return</div>
-          <div className="legend-text">{legendText}</div>
-        </div>
-
-        <section className="list">
-          <div className="list-head">
-            <div className="list-title">Selected car</div>
-            <div className="list-sub">
-              <Button to="/" variant="secondary" leftIcon={angleLeft}>
-                Back to all cars
-              </Button>
-            </div>
+      <section className="list">
+        <div className="list-head">
+          <div className="list-title">Selected car</div>
+          <div className="list-sub">
+            <Button to="/" variant="secondary" leftIcon={angleLeft}>
+              Back to all cars
+            </Button>
           </div>
-          {!car && <p className="error">Car not found</p>}
-          {car && (
-			<div className="detail">
-              <ul className="items">
-                <CarCard car={car} clickable={false} />
-              </ul>
-            </div>
-          )}
-        </section>
-
+        </div>
+        {!car && <p className="error">Car not found</p>}
         {car && (
-          <section className="extras-wrap">
-            <div className="list-head">
-              <div className="list-title">Additional information</div>
-            </div>
-            <div className="extras">
-              <div className="extra-note">Additional information will be shown here.</div>
-            </div>
-          </section>
+          <div className="detail">
+            <ul className="items">
+              <CarCard car={car} clickable={false} />
+            </ul>
+          </div>
         )}
-      </main>
-    </div>
+      </section>
+
+      {car && (
+        <section className="extras-wrap">
+          <div className="list-head">
+            <div className="list-title">Additional information</div>
+          </div>
+          <div className="extras">
+            <div className="extra-note">Additional information will be shown here.</div>
+          </div>
+        </section>
+      )}
+    </>
   );
 }

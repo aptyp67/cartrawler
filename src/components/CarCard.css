@@ -18,10 +18,6 @@
     0 4px 10px color-mix(in srgb, var(--black) 10%, transparent);
   transform: translateY(-1px);
 }
-.item:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 20%, transparent);
-}
 
 .item-main {
   display: grid;
@@ -129,8 +125,5 @@
   }
   .item-specs {
     gap: 8px 10px;
-  }
-  .item-name {
-    overflow-wrap: anywhere;
   }
 }

@@ -3,22 +3,6 @@
   background: var(--white);
 }
 
-.topbar {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  padding: 16px 20px;
-  border-bottom: 1px solid var(--container);
-  background: var(--white);
-  box-shadow: 0 1px 0 color-mix(in srgb, var(--black) 6%, transparent);
-}
-.brand {
-  margin: 0;
-  font-size: var(--subtitle-xl);
-  line-height: var(--subtitle-xl-lh);
-  font-weight: 700;
-}
-
 .content {
   max-width: 1040px;
   margin: 0 auto;
@@ -38,13 +22,6 @@
   border: 1px solid var(--container);
   border-radius: var(--radius);
   background: var(--white);
-  box-shadow: 0 1px 2px color-mix(in srgb, var(--black) 6%, transparent);
-}
-.legend-title {
-  font-weight: 600;
-}
-.legend-text {
-  color: color-mix(in srgb, var(--black) 80%, var(--white));
 }
 
 .list {
@@ -67,47 +44,6 @@
   line-height: var(--subtitle-m-lh);
   font-weight: 600;
 }
-.list-sub {
-  color: color-mix(in srgb, var(--black) 70%, var(--white));
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: var(--radius);
-  border: 1px solid transparent;
-  background: transparent;
-  color: inherit;
-  font: inherit;
-  font-weight: 600;
-  font-size: var(--body-m);
-  line-height: var(--body-m-lh);
-  text-decoration: none;
-  cursor: pointer;
-  transition: background-color 0.15s ease, color 0.15s ease,
-    border-color 0.15s ease, box-shadow 0.15s ease;
-}
-.btn:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 25%, transparent);
-}
-.btn-icon {
-  width: 16px;
-  height: 16px;
-}
-
-.btn--secondary {
-  background: var(--white);
-  border-color: var(--primary);
-  color: var(--primary);
-}
-.btn--secondary:hover {
-  background: color-mix(in srgb, var(--primary) 8%, var(--white));
-}
 
 @media (max-width: 480px) {
   .topbar {
@@ -119,8 +55,5 @@
   }
   .content {
     padding: 12px;
-  }
-  .legend-text {
-    overflow-wrap: anywhere;
   }
 }

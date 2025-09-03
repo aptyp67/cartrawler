@@ -1,0 +1,17 @@
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--container);
+  background: var(--white);
+}
+.brand {
+  margin: 0;
+  font-size: var(--subtitle-xl);
+  line-height: var(--subtitle-xl-lh);
+  font-weight: 700;
+}

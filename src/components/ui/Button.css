@@ -1,0 +1,29 @@
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  font-weight: 600;
+  font-size: var(--body-m);
+  line-height: var(--body-m-lh);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.btn--secondary {
+  background: var(--white);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+.btn--secondary:hover {
+  background: color-mix(in srgb, var(--primary) 8%, var(--white));
+}

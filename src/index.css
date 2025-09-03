@@ -51,10 +51,23 @@ body,
   --body-s-lh: 17px;
 }
 
+.dark {
+  --black: #f1f1f1;
+  --white: #1a1a1a;
+  --grey: #0f0f10;
+  --container: #4a4a50;
+}
+
+.dark .btn-icon,
+.dark .spec-icon,
+.dark .mono-icon {
+  filter: invert(1);
+}
+
 body {
   margin: 0;
   color: var(--black);
-  background: var(--grey);
+  background: var(--white);
   font-family: "Open Sans", system-ui, -apple-system, Segoe UI, Roboto,
     Helvetica, Arial, sans-serif;
   font-size: 16px;

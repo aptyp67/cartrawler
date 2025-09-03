@@ -13,6 +13,7 @@ export { default as planeIcon } from "./Icons/plane.svg";
 export { default as alamoLogo } from "./Vendors/alamo.svg";
 export { default as avisLogo } from "./Vendors/avis.svg";
 export { default as hertzLogo } from "./Vendors/hertz.svg";
+export { default as hertzDarkLogo } from "./Vendors/hertz-dark.svg";
 export { default as partnerLogo } from "./Partner Logo/partner.svg";
 
 export { default as reactSvg } from "./react.svg";
