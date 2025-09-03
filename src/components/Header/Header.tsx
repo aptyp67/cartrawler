@@ -1,4 +1,4 @@
-import { useTheme } from "../theme";
+import { useTheme } from "../../theme";
 import "./Header.css";
 
 export default function Header() {
@@ -19,3 +19,4 @@ export default function Header() {
     </header>
   );
 }
+

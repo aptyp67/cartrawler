@@ -1,4 +1,4 @@
-import type { CarItem } from "../api";
+import type { CarItem } from "../../api";
 import { Link } from "react-router-dom";
 import {
   personIcon,
@@ -12,8 +12,8 @@ import {
   hertzLogo,
   hertzDarkLogo,
   partnerLogo,
-} from "../assets";
-import { useTheme } from "../theme";
+} from "../../assets";
+import { useTheme } from "../../theme";
 import "./CarCard.css";
 
 type Props = {
@@ -120,3 +120,4 @@ export default function CarCard({ car, clickable = true }: Props) {
     </li>
   );
 }
+

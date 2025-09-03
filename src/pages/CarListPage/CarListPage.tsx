@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
-import { type CarsData, type CarItem } from "../api";
-import CarCard from "../components/CarCard";
-import { formatDate } from "../utils";
+import { type CarsData, type CarItem } from "../../api";
+import { CarCard } from "../../components";
+import { formatDate } from "../../utils";
 import "./CarListPage.css";
 
 type Props = { data: CarsData };
@@ -61,3 +61,4 @@ export default function CarListPage({ data }: Props) {
     </>
   );
 }
+

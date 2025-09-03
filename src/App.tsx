@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import CarListPage from "./pages/CarListPage";
-import CarDetailPage from "./pages/CarDetailPage";
+import { CarListPage, CarDetailPage } from "./pages";
 import { getCars, type CarsData } from "./api";
-import Header from "./components/Header";
-import { ThemeProvider } from "./ThemeContext";
+import { Header } from "./components";
+import { ThemeProvider } from "./theme";
 
 import "./App.css";
 

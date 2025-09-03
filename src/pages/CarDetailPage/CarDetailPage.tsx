@@ -1,10 +1,9 @@
 import { useMemo } from "react";
 import { useParams } from "react-router-dom";
-import { type CarsData, type CarItem } from "../api";
-import { formatDate } from "../utils";
-import CarCard from "../components/CarCard";
-import Button from "../components/ui/Button";
-import { angleLeft } from "../assets";
+import { type CarsData, type CarItem } from "../../api";
+import { formatDate } from "../../utils";
+import { CarCard, Button } from "../../components";
+import { angleLeft } from "../../assets";
 import "./CarDetailPage.css";
 
 type Props = { data: CarsData };
@@ -61,3 +60,4 @@ export default function CarDetailPage({ data }: Props) {
     </>
   );
 }
+
