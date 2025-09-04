@@ -7,8 +7,9 @@ export default function Header() {
   const isDark = theme === "dark";
   const { t, i18n } = useTranslation();
   const lang = i18n.language.startsWith("ru") ? "ru" : "en";
-/*   const nextLang = lang === "ru" ? "en" : "ru"; */
-  const nextLangName = nextLang === "ru" ? t("header.lang_ru") : t("header.lang_en");
+  const nextLang = lang === "ru" ? "en" : "ru";
+  const nextLangName =
+    nextLang === "ru" ? t("header.lang_ru") : t("header.lang_en");
 
   return (
     <header className="topbar">
@@ -25,7 +26,9 @@ export default function Header() {
         <button
           className="btn btn--secondary"
           onClick={toggle}
-          aria-label={isDark ? t("header.switch_to_light") : t("header.switch_to_dark")}
+          aria-label={
+            isDark ? t("header.switch_to_light") : t("header.switch_to_dark")
+          }
           title={isDark ? t("header.light") : t("header.dark")}
         >
           {isDark ? "☀️" : "🌙"}
