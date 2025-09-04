@@ -1,12 +1,13 @@
 export function formatDate(input: string) {
   if (!input) return "";
   const d = new Date(input);
-  const date = d.toLocaleDateString(undefined, {
+  const locale = (typeof document !== "undefined" && document.documentElement.lang) || undefined;
+  const date = d.toLocaleDateString(locale, {
     year: "numeric",
     month: "short",
     day: "2-digit",
   });
-  const time = d.toLocaleTimeString(undefined, {
+  const time = d.toLocaleTimeString(locale, {
     hour: "2-digit",
     minute: "2-digit",
   });

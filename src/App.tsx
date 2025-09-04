@@ -4,6 +4,7 @@ import { CarListPage, CarDetailPage } from "./pages";
 import { getCars, type CarsData } from "./api";
 import { Header } from "./components";
 import { ThemeProvider } from "./theme";
+import { useTranslation } from "react-i18next";
 
 import "./App.css";
 
@@ -11,6 +12,7 @@ export default function App() {
   const [data, setData] = useState<CarsData | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const { t } = useTranslation();
 
   useEffect(() => {
     getCars()
@@ -30,9 +32,9 @@ export default function App() {
         <div className="page">
           <Header />
           <main className="content">
-            {loading && <p className="note">Loading…</p>}
+            {loading && <p className="note">{t("app.loading")}</p>}
             {!loading && (error || !data) && (
-              <p className="error">{error || "Failed to load data"}</p>
+              <p className="error">{error || t("app.load_error")}</p>
             )}
             {!loading && data && (
               <Routes>

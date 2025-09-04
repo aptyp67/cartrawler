@@ -1,0 +1,46 @@
+{
+  "header": {
+    "title": "Car availability",
+    "switch_to_light": "Switch to light theme",
+    "switch_to_dark": "Switch to dark theme",
+    "light": "Light theme",
+    "dark": "Dark theme",
+    "switch_language": "Switch language to {{langName}}",
+    "lang_en": "English",
+    "lang_ru": "Russian"
+  },
+  "legend": {
+    "pickup_and_return": "Pickup and return"
+  },
+  "list": {
+    "cars": "Cars",
+    "options_one": "{{count}} option",
+    "options_other": "{{count}} options",
+    "sort_by": "Sort by",
+    "price_low_high": "Price: Low to High",
+    "price_high_low": "Price: High to Low"
+  },
+  "detail": {
+    "selected_car": "Selected car",
+    "back_to_all": "Back to all cars",
+    "not_found": "Car not found",
+    "additional_info": "Additional information",
+    "additional_info_note": "Additional information will be shown here."
+  },
+  "app": {
+    "loading": "Loading…",
+    "load_error": "Failed to load data"
+  },
+  "car": {
+    "ac_yes": "A/C",
+    "ac_no": "No A/C",
+    "per_day": "/ day",
+    "passengers": "Passengers",
+    "baggage": "Baggage",
+    "doors": "Doors",
+    "transmission": "Transmission",
+    "fuel": "Fuel",
+    "air_conditioning": "Air conditioning"
+  }
+}
+

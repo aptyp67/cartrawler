@@ -1,0 +1,48 @@
+{
+  "header": {
+    "title": "Доступность авто",
+    "switch_to_light": "Переключить на светлую тему",
+    "switch_to_dark": "Переключить на тёмную тему",
+    "light": "Светлая тема",
+    "dark": "Тёмная тема",
+    "switch_language": "Переключить язык на {{langName}}",
+    "lang_en": "Английский",
+    "lang_ru": "Русский"
+  },
+  "legend": {
+    "pickup_and_return": "Получение и возврат"
+  },
+  "list": {
+    "cars": "Автомобили",
+    "options_one": "{{count}} вариант",
+    "options_few": "{{count}} варианта",
+    "options_many": "{{count}} вариантов",
+    "options_other": "{{count}} вариантов",
+    "sort_by": "Сортировка",
+    "price_low_high": "Цена: по возрастанию",
+    "price_high_low": "Цена: по убыванию"
+  },
+  "detail": {
+    "selected_car": "Выбранный автомобиль",
+    "back_to_all": "Назад ко всем авто",
+    "not_found": "Автомобиль не найден",
+    "additional_info": "Дополнительная информация",
+    "additional_info_note": "Здесь будет показана дополнительная информация."
+  },
+  "app": {
+    "loading": "Загрузка…",
+    "load_error": "Не удалось загрузить данные"
+  },
+  "car": {
+    "ac_yes": "Кондиционер",
+    "ac_no": "Без кондиционера",
+    "per_day": "/ день",
+    "passengers": "Пассажиры",
+    "baggage": "Багаж",
+    "doors": "Двери",
+    "transmission": "Коробка передач",
+    "fuel": "Топливо",
+    "air_conditioning": "Кондиционер"
+  }
+}
+

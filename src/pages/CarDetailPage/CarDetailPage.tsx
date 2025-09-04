@@ -4,12 +4,14 @@ import { type CarsData, type CarItem } from "../../api";
 import { formatDate } from "../../utils";
 import { CarCard, Button } from "../../components";
 import { angleLeft } from "../../assets";
+import { useTranslation } from "react-i18next";
 import "./CarDetailPage.css";
 
 type Props = { data: CarsData };
 
 export default function CarDetailPage({ data }: Props) {
   const { id } = useParams();
+  const { t } = useTranslation();
 
   const car: CarItem | undefined = useMemo(() => {
     return data.cars.find((c) => c.id === id);
@@ -24,20 +26,20 @@ export default function CarDetailPage({ data }: Props) {
   return (
     <>
       <div className="legend">
-        <div className="legend-title">Pickup and return</div>
+        <div className="legend-title">{t("legend.pickup_and_return")}</div>
         <div className="legend-text">{legendText}</div>
       </div>
 
       <section className="list">
         <div className="list-head">
-          <div className="list-title">Selected car</div>
+          <div className="list-title">{t("detail.selected_car")}</div>
           <div className="list-sub">
             <Button to="/" variant="secondary" leftIcon={angleLeft}>
-              Back to all cars
+              {t("detail.back_to_all")}
             </Button>
           </div>
         </div>
-        {!car && <p className="error">Car not found</p>}
+        {!car && <p className="error">{t("detail.not_found")}</p>}
         {car && (
           <div className="detail">
             <ul className="items">
@@ -50,14 +52,13 @@ export default function CarDetailPage({ data }: Props) {
       {car && (
         <section className="extras-wrap">
           <div className="list-head">
-            <div className="list-title">Additional information</div>
+            <div className="list-title">{t("detail.additional_info")}</div>
           </div>
           <div className="extras">
-            <div className="extra-note">Additional information will be shown here.</div>
+            <div className="extra-note">{t("detail.additional_info_note")}</div>
           </div>
         </section>
       )}
     </>
   );
 }
-

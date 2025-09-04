@@ -14,6 +14,7 @@ import {
   partnerLogo,
 } from "../../assets";
 import { useTheme } from "../../theme";
+import { useTranslation } from "react-i18next";
 import "./CarCard.css";
 
 type Props = {
@@ -44,6 +45,7 @@ function hasAC(value: string | undefined): boolean {
 
 export default function CarCard({ car, clickable = true }: Props) {
   const { theme } = useTheme();
+  const { t } = useTranslation();
   const vendorKey = (car.vendorName || "").trim().toLowerCase();
   const logo = (
     (theme === "dark" && vendorDarkLogoByName[vendorKey]) ||
@@ -64,34 +66,34 @@ export default function CarCard({ car, clickable = true }: Props) {
           </div>
           <ul className="item-specs">
             <li className="spec">
-              <img className="spec-icon" src={personIcon} alt="Passengers" />
+              <img className="spec-icon" src={personIcon} alt={t("car.passengers")} />
               <span className="spec-text">{car.passengers}</span>
             </li>
             <li className="spec">
-              <img className="spec-icon" src={bagIcon} alt="Baggage" />
+              <img className="spec-icon" src={bagIcon} alt={t("car.baggage")} />
               <span className="spec-text">{car.baggage}</span>
             </li>
             {car.doors && (
               <li className="spec">
-                <img className="spec-icon" src={doorIcon} alt="Doors" />
+                <img className="spec-icon" src={doorIcon} alt={t("car.doors")} />
                 <span className="spec-text">{car.doors}</span>
               </li>
             )}
             {car.transmission && (
               <li className="spec">
-                <img className="spec-icon" src={transmissionIcon} alt="Transmission" />
+                <img className="spec-icon" src={transmissionIcon} alt={t("car.transmission")} />
                 <span className="spec-text">{car.transmission}</span>
               </li>
             )}
             {car.fuel && (
               <li className="spec">
-                <img className="spec-icon" src={fuelIcon} alt="Fuel" />
+                <img className="spec-icon" src={fuelIcon} alt={t("car.fuel")} />
                 <span className="spec-text">{car.fuel}</span>
               </li>
             )}
             <li className="spec">
-              <img className="spec-icon" src={acIcon} alt="Air conditioning" />
-              <span className="spec-text">{ac ? "A/C" : "No A/C"}</span>
+              <img className="spec-icon" src={acIcon} alt={t("car.air_conditioning")} />
+              <span className="spec-text">{ac ? t("car.ac_yes") : t("car.ac_no")}</span>
             </li>
           </ul>
         </div>
@@ -102,7 +104,7 @@ export default function CarCard({ car, clickable = true }: Props) {
           <span className="currency">{car.currency}</span>
         </div>
         <div className="item-subprice">
-          {car.pricePerDay.toFixed(2)} {car.currency} / day
+          {car.pricePerDay.toFixed(2)} {car.currency} {t("car.per_day")}
         </div>
       </div>
     </>
@@ -120,4 +122,3 @@ export default function CarCard({ car, clickable = true }: Props) {
     </li>
   );
 }
-
